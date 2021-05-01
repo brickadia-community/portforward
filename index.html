@@ -1,0 +1,53 @@
+<title>Brickadia Port Forwarding Guide</title>
+<h3>Before you read:</h3>
+<ul>
+  <li>Ignore the Network Utilities thing on portforward.com.</li>
+  <li>Dedicated servers perform much better than servers hosted from the in-game menu</li>
+</ul>
+
+<h1>Port forwarding instructions</h1>
+<ol>
+  <li>Visit <a href="https://portforward.com/router.htm" target="_blank" rel="noopener noreferrer">this guide website</a></li>
+  <li>Find your router by model</li>
+  <li>Follow the instructions and when you get to the point where it becomes relevant the actual port you want is UDP 7777</li>
+</ol>
+
+<h1>Brickadia server connection troubleshooting guide</h1>
+
+<ol>
+  <li>Check if port 7777 is forwarded for UDP</li>
+  <li>Check if the computer the port is forwarded for has the same IP as the <code>IPv4 Address</code> when you run <code>ipconfig</code> in a cmd</li>
+  <li>Check if there is only one currently active adapter when you run `ipconfig` in cmd (Inactive may say "Media Disconnected")</li>
+  <li>Check if Firewall -> Advanced Settings -> Inbound Rules -> brickadia-win64-shipping is checked for public or private networks</li>
+  <li>Check if Ethernet (or Wireless) Settings -> Click the connected Network -> Network profile is the same as the one from firewall settings</li>
+  <li>Check if Ethernet (or Wireless) Settings -> Change Adapter Options -> Only one network connection is Enabled and Connected</li>
+</ol>
+
+<b>Other things to note:</b>
+
+<ul>
+  <li>
+    If you have multiple networks at the same time:
+    <ul>
+      <li>Make sure you forward for the address of whatever adapter Brickadia is using</li>
+      <li>If you are running Hamatchi, this is likely a problem. Try killing the task and disabling the adapter.</li>
+    </ul>
+  </li>
+
+  <li>
+    If your port forwarding requires you to put a `Local IP Address` and an `External IP Address`:
+    <ul>
+      <li>Leave the section that does not have Start/End Port or Protocol alone</li>
+      <li>Set Local IP address to the `IPv4 Address` from `ipconfig`</li>
+      <li>External IP address should be `0.0.0.0`</li>
+    </ul>
+  </li>
+
+  <li>
+    If your port forwarding requires you to put a `Source IP Address` and an `Destination IP Address`:
+    <ul>
+      <li>Set Source IP address to `0.0.0.0`</li>
+      <li>Set Destination IP address to the `IPv4 Address` from `ipconfig`</li>
+    </ul>
+  </li>
+<ul>
