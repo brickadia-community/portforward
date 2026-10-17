@@ -1,55 +1,111 @@
-<title>Brickadia Port Forwarding Guide</title>
-<h3>Before you read:</h3>
-<ul>
-  <li>Ignore the Network Utilities thing on portforward.com.</li>
-  <li>Dedicated servers perform much better than servers hosted from the in-game menu</li>
-</ul>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brickadia Port Forwarding Guide</title>
+    <meta
+      name="description"
+      content="How to port forward a Brickadia server, and a checklist for when players can't connect."
+    />
+    <meta name="theme-color" content="#091021" />
+    <link rel="icon" type="image/png" href="assets/img/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background" aria-hidden="true"></div>
 
-<h1>Port forwarding instructions</h1>
-<ol>
-  <li>Visit <a href="https://portforward.com/router.htm" target="_blank" rel="noopener noreferrer">this guide website</a></li>
-  <li>Find your router by model</li>
-  <li>Follow the instructions and when you get to the point where it becomes relevant the actual port you want is <b>UDP 7777</b></li>
-</ol>
+    <header class="hero">
+      <a href="https://brickadia.dev/"><img class="hero-logo" src="assets/img/logo.png" alt="Brickadia Community" width="96" height="96" /></a>
+      <h1>Port Forwarding</h1>
+      <p class="tagline">Get players connecting to your Brickadia server.</p>
+      <p class="port">Brickadia uses <strong>UDP 7777</strong></p>
+    </header>
 
-<h1>Brickadia server connection troubleshooting guide</h1>
+    <main>
+      <section class="panel" aria-labelledby="before">
+        <h2 class="panel-header" id="before">Before you read</h2>
+        <ul class="notes">
+          <li class="note">Ignore the Network Utilities thing on portforward.com.</li>
+          <li class="note tip">
+            Dedicated servers perform much better than servers hosted from the in-game menu.
+          </li>
+        </ul>
+      </section>
 
-<ol>
-  <li>Check if port 7777 is forwarded for UDP</li>
-  <li>Check if the computer the port is forwarded for has the same IP as the <code>IPv4 Address</code> when you run <code>ipconfig</code> in a cmd</li>
-  <li>Check if there is only one currently active adapter when you run <code>ipconfig</code> in cmd (Inactive may say "Media Disconnected")</li>
-  <li>Check if Firewall -> Advanced Settings -> Inbound Rules -> brickadia-win64-shipping is checked for public or private networks</li>
-  <li>Check if Ethernet (or Wireless) Settings -> Click the connected Network -> Network profile is the same as the one from firewall settings</li>
-  <li>Check if Ethernet (or Wireless) Settings -> Change Adapter Options -> Only one network connection is Enabled and Connected</li>
-</ol>
+      <section class="panel" aria-labelledby="forwarding">
+        <h2 class="panel-header" id="forwarding">Port forwarding instructions</h2>
+        <ol class="steps">
+          <li>
+            Visit
+            <a href="https://portforward.com/router.htm" target="_blank" rel="noopener noreferrer">this guide website</a>.
+          </li>
+          <li>Find your router by model.</li>
+          <li>
+            Follow the instructions. When you get to the point where it becomes relevant, the port
+            you want is <strong class="hl">UDP 7777</strong>.
+          </li>
+        </ol>
+      </section>
 
-<b>Other things to note:</b>
+      <section class="panel" aria-labelledby="troubleshooting">
+        <h2 class="panel-header" id="troubleshooting">Connection troubleshooting</h2>
+        <ol class="steps">
+          <li>Check that port <strong class="hl">7777</strong> is forwarded for <strong class="hl">UDP</strong>.</li>
+          <li>
+            Check that the computer the port is forwarded to has the same IP as the
+            <code>IPv4 Address</code> shown when you run <code>ipconfig</code> in cmd.
+          </li>
+          <li>
+            Check that there is only one active adapter when you run <code>ipconfig</code> in cmd.
+            Inactive ones may say "Media Disconnected".
+          </li>
+          <li>
+            Check that
+            <span class="path"><span>Firewall</span><span>Advanced Settings</span><span>Inbound Rules</span><span>brickadia-win64-shipping</span></span>
+            is checked for public or private networks.
+          </li>
+          <li>
+            Check that
+            <span class="path"><span>Ethernet (or Wireless) Settings</span><span>Click the connected network</span><span>Network profile</span></span>
+            is the same as the one from the firewall settings.
+          </li>
+          <li>
+            Check that under
+            <span class="path"><span>Ethernet (or Wireless) Settings</span><span>Change Adapter Options</span></span>
+            only one network connection is Enabled and Connected.
+          </li>
+        </ol>
+      </section>
 
-<ul>
-  <li>
-    If you have multiple networks at the same time:
-    <ul>
-      <li>Make sure you forward for the address of whatever adapter Brickadia is using</li>
-      <li>If you are running Hamatchi, this is likely a problem. Try killing the task and disabling the adapter.</li>
-    </ul>
-  </li>
+      <section class="panel" aria-labelledby="other">
+        <h2 class="panel-header" id="other">Other things to note</h2>
 
-  <li>
-    If your port forwarding requires you to put a <code>Local IP Address</code> and an <code>External IP Address</code>:
-    <ul>
-      <li>Leave the section that does not have Start/End Port or Protocol alone</li>
-      <li>Set Local IP address to the <code>IPv4 Address</code> from <code>ipconfig</code></li>
-      <li>External IP address should be <code>0.0.0.0</code></li>
-    </ul>
-  </li>
+        <h3 class="rows-label">If you have multiple networks at the same time</h3>
+        <ul class="rows">
+          <li>Make sure you forward for the address of whatever adapter Brickadia is using.</li>
+          <li>If you are running Hamachi, this is likely a problem. Try killing the task and disabling the adapter.</li>
+        </ul>
 
-  <li>
-    If your port forwarding requires you to put a <code>Source IP Address</code> and an <code>Destination IP Address</code>:
-    <ul>
-      <li>Set Source IP address to <code>0.0.0.0</code></li>
-      <li>Set Destination IP address to the <code>IPv4 Address</code> from <code>ipconfig</code></li>
-    </ul>
-  </li>
-</ul>
+        <h3 class="rows-label">If your router asks for a Local IP and an External IP</h3>
+        <ul class="rows">
+          <li>Leave the section that does not have Start/End Port or Protocol alone.</li>
+          <li>Set <code>Local IP Address</code> to the <code>IPv4 Address</code> from <code>ipconfig</code>.</li>
+          <li>Set <code>External IP Address</code> to <code>0.0.0.0</code>.</li>
+        </ul>
 
-Submit changes to this webpage at its <a href="https://github.com/brickadia-community/portforward">github repo</a>.
+        <h3 class="rows-label">If your router asks for a Source IP and a Destination IP</h3>
+        <ul class="rows">
+          <li>Set <code>Source IP Address</code> to <code>0.0.0.0</code>.</li>
+          <li>Set <code>Destination IP Address</code> to the <code>IPv4 Address</code> from <code>ipconfig</code>.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      Made by the <a href="https://brickadia.dev/">Brickadia community</a>. Not affiliated with Brickadia.
+      Submit changes to this page at its
+      <a href="https://github.com/brickadia-community/portforward">GitHub repo</a>.
+    </footer>
+  </body>
+</html>

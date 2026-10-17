@@ -1,0 +1,289 @@
+/* The brickadia.dev / omegga web UI look: its palette, Glacial Indifference,
+ * bold uppercase panel headers on the footer navy, 12px panels with
+ * alternating rows, and the blurred night-sky background. */
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('assets/fonts/GlacialIndifferenceRegular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Glacial Indifference';
+  src: url('assets/fonts/GlacialIndifferenceBold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --bg-primary: #1b2f4a;
+  --bg-secondary: #131d30;
+  --bg-secondary-alt: #111a2b;
+  --bg-footer: #091021;
+  --boring-fg: #a7bbce;
+  --element-fg: #5e7190;
+  --element-pressed: #263f61;
+  --main-normal: #5da93d;
+  --main-hover: #8dc377;
+  --info-normal: #009bee;
+  --info-hover: #4cb9f3;
+  --warn-normal: #ffa10b;
+  --element-normal: #455a7e;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-secondary);
+  scrollbar-color: #224c7b var(--bg-footer);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--boring-fg);
+  font-family: 'Glacial Indifference', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.45;
+  padding: 0 16px;
+}
+
+a {
+  color: var(--info-hover);
+}
+
+strong {
+  color: #ffffff;
+}
+
+.background {
+  position: fixed;
+  inset: -40px;
+  z-index: -1;
+  background: url('assets/img/dark_bg.webp') 50% 50% / cover no-repeat;
+  filter: blur(20px) brightness(0.8);
+}
+
+/* Header */
+
+.hero {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 0 32px;
+  text-align: center;
+}
+
+.hero-logo {
+  width: 96px;
+  height: 96px;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+
+.hero h1 {
+  margin: 12px 0 10px;
+  color: #ffffff;
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  /* A thick black outline, like the logo's: the stroke is centred on the
+   * glyph edge, so it is twice the visible width and painted under the fill
+   * to keep the letters their full weight. */
+  -webkit-text-stroke: 0.22em #000000;
+  paint-order: stroke fill;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.tagline {
+  margin: 0 0 20px;
+  font-size: 20px;
+}
+
+/* The one fact everyone comes here for. */
+.port {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: var(--bg-footer);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.port strong {
+  color: var(--main-hover);
+}
+
+/* Panels */
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panel {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.panel-header {
+  margin: 0;
+  padding: 10px 20px;
+  background: var(--bg-footer);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.rows-label {
+  margin: 0;
+  padding: 8px 20px;
+  background: var(--bg-primary);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note {
+  padding: 10px 20px;
+  border-left: 4px solid var(--warn-normal);
+  background: rgba(255, 161, 11, 0.08);
+}
+
+.note.tip {
+  border-left-color: var(--info-normal);
+  background: rgba(0, 155, 238, 0.08);
+}
+
+code {
+  padding: 0 5px;
+  border-radius: 4px;
+  background: var(--element-pressed);
+  color: var(--info-hover);
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+.hl {
+  color: var(--main-hover);
+}
+
+/* Settings paths such as Firewall › Advanced Settings › Inbound Rules. */
+.path {
+  display: inline;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.path span:not(:last-child)::after {
+  /* The escape consumes one trailing space, hence two. */
+  content: ' \203A  ';
+  color: var(--element-fg);
+}
+
+/* Lists: alternating rows, numbered badges for ordered steps. */
+
+.steps,
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps {
+  counter-reset: step;
+}
+
+.steps li,
+.rows li {
+  position: relative;
+  padding: 12px 20px;
+  background: var(--bg-secondary);
+}
+
+.steps li:nth-child(even),
+.rows li:nth-child(even) {
+  background: var(--bg-secondary-alt);
+}
+
+.steps li {
+  counter-increment: step;
+  padding-left: 64px;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 20px;
+  top: 6px;
+  width: 30px;
+  color: var(--info-normal);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1;
+  text-align: center;
+}
+
+.rows li {
+  padding-left: 40px;
+}
+
+.rows li::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 21px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--element-fg);
+}
+
+footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 0 40px;
+  font-size: 15px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .steps li {
+    padding-left: 56px;
+  }
+  .steps li::before {
+    left: 16px;
+  }
+  .rows-label,
+  .panel-header,
+  .note {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  code {
+    white-space: normal;
+  }
+}
